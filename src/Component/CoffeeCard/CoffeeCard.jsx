@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import Swal from "sweetalert2";
 import { FaEye } from "react-icons/fa";
+import { MdEdit } from "react-icons/md";
 
 const CoffeeCard = ({ coffee, coffees, setCoffees }) => {
   const { name, photo, details, quantity, _id } = coffee;
@@ -53,13 +54,13 @@ const CoffeeCard = ({ coffee, coffees, setCoffees }) => {
               <FaEye className="text-2xl" />
             </button>
             <Link to={`updateCoffee/${_id}`}>
-              <button className="btn join-item bg-[#3C393B] text-white">
-                Edit
+              <button className="flex items-center justify-center w-12 h-12 rounded-lg bg-[#D2B48C] text-white hover:bg-[#3C393B]">
+              <MdEdit />
               </button>
             </Link>
             <button
               onClick={() => handleDelete(_id)}
-              className="btn join-item bg-[#EA4744] text-white"
+              className="flex items-center justify-center w-12 h-12 rounded-lg bg-[#D2B48C] text-white hover:bg-[#EA4744]"
             >
               Delete
             </button>
