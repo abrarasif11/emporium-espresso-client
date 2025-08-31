@@ -40,15 +40,15 @@ const CoffeeCard = ({ coffee }) => {
       <figure>
         <img src={photo} alt="coffee" />
       </figure>
-      <div className="pr-4 justify-between flex w-full">
+      <div className="pr-4  ml-5 justify-between flex w-full">
         <div>
           <h2 className="card-title">{name}</h2>
-          <p>{details}</p>
-          <p>{quantity}</p>
+          <p className="font-semibold">Coffee Details : {details}</p>
+          <p className="font-semibold">Quantity Available : {quantity}</p>
         </div>
         <div className="card-actions justify-end">
           <div className="join join-vertical space-y-4 ">
-            <button className="btn join-item bg-[#D2B48C] text-white">
+            <button className="btn join-item bg-[#D2B48C]  text-white">
               Eye
             </button>
             <Link to={`updateCoffee/${_id}`}>
