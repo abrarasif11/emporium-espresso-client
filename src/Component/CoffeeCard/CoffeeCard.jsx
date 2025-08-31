@@ -2,11 +2,10 @@ import React from "react";
 import { Link } from "react-router-dom";
 import Swal from "sweetalert2";
 
-const CoffeeCard = ({ coffee }) => {
+const CoffeeCard = ({ coffee, coffees , setCoffees }) => {
   const { name, photo, details, quantity, _id } = coffee;
 
   const handleDelete = (_id) => {
-    console.log(_id);
     Swal.fire({
       title: "Are you sure?",
       text: "You won't be able to revert this!",
@@ -22,18 +21,20 @@ const CoffeeCard = ({ coffee }) => {
         })
           .then((res) => res.json())
           .then((data) => {
-            console.log(data);
             if (data.deletedCount > 0) {
               Swal.fire({
                 title: "Deleted!",
-                text: "Your file has been deleted.",
+                text: "Coffee has been deleted.",
                 icon: "success",
               });
+              const remaining = coffees.filter(cof => cof._id !== _id);
+              setCoffees(remaining);
             }
           });
       }
     });
   };
+
 
   return (
     <div className="card card-side bg-base-100 m-10 shadow-xl">
