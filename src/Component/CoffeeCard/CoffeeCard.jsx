@@ -1,8 +1,9 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import Swal from "sweetalert2";
+import { FaEye } from "react-icons/fa";
 
-const CoffeeCard = ({ coffee, coffees , setCoffees }) => {
+const CoffeeCard = ({ coffee, coffees, setCoffees }) => {
   const { name, photo, details, quantity, _id } = coffee;
 
   const handleDelete = (_id) => {
@@ -27,14 +28,13 @@ const CoffeeCard = ({ coffee, coffees , setCoffees }) => {
                 text: "Coffee has been deleted.",
                 icon: "success",
               });
-              const remaining = coffees.filter(cof => cof._id !== _id);
+              const remaining = coffees.filter((cof) => cof._id !== _id);
               setCoffees(remaining);
             }
           });
       }
     });
   };
-
 
   return (
     <div className="card card-side bg-base-100 m-10 shadow-xl">
@@ -49,8 +49,8 @@ const CoffeeCard = ({ coffee, coffees , setCoffees }) => {
         </div>
         <div className="card-actions justify-end">
           <div className="join join-vertical space-y-4 ">
-            <button className="btn join-item bg-[#D2B48C]  text-white">
-              Eye
+            <button className="flex items-center justify-center w-12 h-12 rounded-lg bg-[#D2B48C] text-white hover:bg-[#c0a070]">
+              <FaEye className="text-2xl" />
             </button>
             <Link to={`updateCoffee/${_id}`}>
               <button className="btn join-item bg-[#3C393B] text-white">
