@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import Swal from "sweetalert2";
 import { FaEye } from "react-icons/fa";
+import { MdDelete } from "react-icons/md";
 import { MdEdit } from "react-icons/md";
 
 const CoffeeCard = ({ coffee, coffees, setCoffees }) => {
@@ -62,7 +63,7 @@ const CoffeeCard = ({ coffee, coffees, setCoffees }) => {
               onClick={() => handleDelete(_id)}
               className="flex items-center justify-center w-12 h-12 rounded-lg bg-[#D2B48C] text-white hover:bg-[#EA4744]"
             >
-              Delete
+              <MdDelete />
             </button>
           </div>
         </div>
