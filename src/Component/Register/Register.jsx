@@ -1,6 +1,11 @@
 import React from 'react'
 
 const Register = () => {
+    const handleRegister = e => {
+        e.preventDefault();
+        console.log('sign up');
+        createUser();
+    }
   return (
     <div className="hero bg-base-200 min-h-screen">
       <div className="hero-content flex-col lg:flex-row-reverse">
@@ -32,7 +37,7 @@ const Register = () => {
               <div>
                 <a className="link link-hover">Forgot password?</a>
               </div>
-              <button className="btn btn-neutral mt-4">Login</button>
+              <button onClick={handleRegister} className="btn btn-neutral mt-4">Login</button>
             </fieldset>
           </div>
         </div>

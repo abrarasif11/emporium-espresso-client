@@ -8,6 +8,7 @@ import UpdateCoffee from "./Component/UpdateCoffee/UpdateCoffee";
 import Main from "./Component/Layout/Main";
 import Login from "./Component/Login/Login";
 import Register from "./Component/Register/Register";
+import AuthProvider from "./firebase/provider/AuthProvider";
 
 const router = createBrowserRouter([
   {
@@ -30,18 +31,20 @@ const router = createBrowserRouter([
           fetch(`http://localhost:5000/coffee/${params.id}`),
       },
       {
-        path: '/login',
-        element: <Login/>
+        path: "/login",
+        element: <Login />,
       },
       {
-        path: '/register',
-        element: <Register/>
-      }
+        path: "/register",
+        element: <Register />,
+      },
     ],
   },
 ]);
 createRoot(document.getElementById("root")).render(
   <StrictMode>
-    <RouterProvider router={router} />
+    <AuthProvider>
+      <RouterProvider router={router} />
+    </AuthProvider>
   </StrictMode>
 );
