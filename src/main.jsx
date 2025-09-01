@@ -9,6 +9,7 @@ import Main from "./Component/Layout/Main";
 import Login from "./Component/Login/Login";
 import Register from "./Component/Register/Register";
 import AuthProvider from "./firebase/provider/AuthProvider";
+import Users from "./Component/Register/Users/Users";
 
 const router = createBrowserRouter([
   {
@@ -38,6 +39,11 @@ const router = createBrowserRouter([
         path: "/register",
         element: <Register />,
       },
+      {
+        path: '/users',
+        element: <Users/>,
+        loader : () => fetch('http://localhost:5000/user')
+      }
     ],
   },
 ]);
