@@ -1,5 +1,6 @@
 import React, { useContext } from "react";
 import { AuthContext } from "../../firebase/provider/AuthProvider";
+import Swal from "sweetalert2";
 
 const Register = () => {
   const { createUser } = useContext(AuthContext);
@@ -8,10 +9,33 @@ const Register = () => {
 
     const email = e.target.email.value;
     const password = e.target.password.value;
+    const name = e.target.name.value;
     console.log("sign up", email, password);
     createUser(email,password)
     .then(result => {
       console.log(result.user)
+      const createdAt = result?.user?.metadata?.creationTime;
+      const newUser = {name , email, createdAt}
+      //save new user to database
+      fetch('http://localhost:5000/user', {
+        method: 'POST',
+        headers: {
+          'content-type': 'application/json'
+        },
+        body: JSON.stringify(newUser)
+      })
+      .then(res => res.json())
+      .then(data => {
+        console.log("User Created on DB", data)
+        if(data.insertedId){
+                  Swal.fire({
+                    title: 'Success!',
+                    text: 'User Created Successfully',
+                    icon: 'success',
+                    confirmButtonText: 'Done'
+                  })
+                }
+      })
     })
     .catch(err => {
       console.log('Error', err)
@@ -32,6 +56,13 @@ const Register = () => {
           <div className="card-body">
             <form onSubmit={handleRegister}>
               <fieldset className="fieldset">
+                <label className="label">Your Name</label>
+                <input
+                  type="name"
+                  className="input"
+                  placeholder="Name"
+                  name="name"
+                />
                 <label className="label">Email</label>
                 <input
                   type="email"
