@@ -55,13 +55,13 @@ const CoffeeCard = ({ coffee, coffees, setCoffees }) => {
               <FaEye className="text-2xl" />
             </button>
             <Link to={`updateCoffee/${_id}`}>
-              <button className="flex items-center justify-center w-12 h-12 rounded-lg bg-[#D2B48C] text-white hover:bg-[#3C393B]">
+              <button className="flex items-center justify-center w-12 h-12 rounded-lg bg-[#3C393B] text-white hover:bg-[#3C393B]">
               <MdEdit />
               </button>
             </Link>
             <button
               onClick={() => handleDelete(_id)}
-              className="flex items-center justify-center w-12 h-12 rounded-lg bg-[#D2B48C] text-white hover:bg-[#EA4744]"
+              className="flex items-center justify-center w-12 h-12 rounded-lg bg-[#EA4744] text-white hover:bg-[#EA4744]"
             >
               <MdDelete />
             </button>
