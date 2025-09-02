@@ -49,6 +49,7 @@ const Users = () => {
                 <th>Name</th>
                 <th>Email</th>
                 <th>Created Time</th>
+                <th>Last Login Time</th>
               </tr>
             </thead>
             <tbody>
@@ -59,6 +60,7 @@ const Users = () => {
                   <td>{user.name}</td>
                   <td>{user.email}</td>
                   <td>{user.createdAt}</td>
+                  <td>{user.lastSignInTime}</td>
                   <td>
                     <button className="flex items-center justify-center w-12 mb-2 h-12 rounded-lg bg-[#3C393B] text-white hover:bg-[#c0a070]">
                       <MdEdit className="text-2xl" />

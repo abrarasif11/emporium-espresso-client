@@ -1,5 +1,6 @@
 import React, { useContext } from "react";
 import { AuthContext } from "../../firebase/provider/AuthProvider";
+import { Link } from "react-router-dom";
 
 const Login = () => {
   
@@ -15,6 +16,23 @@ const Login = () => {
     signInUser(email, password)
     .then(result => {
       console.log(result.user)
+
+      // update last login 
+
+      const lastSignInTime = result?.user?.metadata?.lastSignInTime;
+      const loginInfo = { email, lastSignInTime };
+
+      fetch(`http://localhost:5000/user`, {
+        method:'PATCH',
+        headers: {
+          'content-type': 'application/json'
+        },
+        body: JSON.stringify(loginInfo)
+      })
+      .then(res => res.json())
+      .then(data => {
+        console.log('Login info', data)
+      })
     })
     .catch(err => {
       console.log(err)
@@ -51,6 +69,9 @@ const Login = () => {
                 />
                 <div>
                   <a className="link link-hover">Forgot password?</a>
+                  <p>
+                    Already Have an Account <Link to='/register'><span className="text-blue-900">Register</span></Link>
+                  </p>
                 </div>
                 <button className="btn btn-neutral mt-4">Login</button>
               </fieldset>
