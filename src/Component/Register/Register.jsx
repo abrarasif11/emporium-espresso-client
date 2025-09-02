@@ -17,7 +17,7 @@ const Register = () => {
       const createdAt = result?.user?.metadata?.creationTime;
       const newUser = {name , email, createdAt}
       //save new user to database
-      fetch('http://localhost:5000/user', {
+      fetch('https://emporium-espresso-server.vercel.app/user', {
         method: 'POST',
         headers: {
           'content-type': 'application/json'
