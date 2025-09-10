@@ -19,7 +19,8 @@ const router = createBrowserRouter([
       {
         path: "/",
         element: <App />,
-        loader: () => fetch("https://emporium-espresso-server.vercel.app/coffee"),
+        loader: () =>
+          fetch("https://emporium-espresso-server.vercel.app/coffee"), 
       },
       {
         path: "/addCoffee",
@@ -29,7 +30,9 @@ const router = createBrowserRouter([
         path: "/updateCoffee/:id",
         element: <UpdateCoffee />,
         loader: ({ params }) =>
-          fetch(`https://emporium-espresso-server.vercel.app/coffee/${params.id}`),
+          fetch(
+            `https://emporium-espresso-server.vercel.app/coffee/${params.id}`
+          ), 
       },
       {
         path: "/login",
@@ -40,10 +43,11 @@ const router = createBrowserRouter([
         element: <Register />,
       },
       {
-        path: '/users',
-        element: <Users/>,
-        loader : () => fetch('https://emporium-espresso-server.vercel.app/user')
-      }
+        path: "/users",
+        element: <Users />,
+        loader: () =>
+          fetch("https://emporium-espresso-server.vercel.app/users"), 
+      },
     ],
   },
 ]);
